@@ -1,0 +1,269 @@
+<%- include ('header') -%>
+
+<style>
+  body {
+    background: linear-gradient(45deg, #FFC0CB 60%, #00FFFF 40%);
+   }
+  @media  (max-width: 2000px) and (min-width:800px) {
+    .class1{
+      margin-top:15px;
+      padding-bottom:100px;
+      margin-left:100px;
+
+        }
+    .class_card{
+      margin-left:65rem;
+      margin-right: 25rem;
+      float:right;
+    }
+  }
+  @media  (max-width: 700px){
+    .Created_Button{
+      margin-top:15px;
+    }
+    .class_card{
+      margin-left:20px;
+      margin-bottom: 20px;
+    }
+    .h2{
+      color: white;
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+  }
+  .item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-pay {
+    background-color: #C800Da;
+    border: 0;
+    color: #fff;
+    font-weight: 600;
+  }
+
+</style>
+
+<!--<button class="refresh">Refresh Page</button>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $('.refresh').click(function(){
+        $('form').each(function(idx, obj){ 
+            obj.reset();
+        });
+    });
+
+     // $(".refresh").click(function(){
+        //alert('Hello');
+       // $(".refresh").attr('onClick',"history.go(0)");
+      //}) 
+ });
+</script>-->
+
+
+
+<!--table-->
+
+<div class="table_view " >
+  <table class="table View ">
+    <thead style="position: sticky; top:0;">
+    <tr style="background-color:lightgrey;">
+        <th scope="#"> Delete </th>
+        <th scope="col">DESCRIOTION</th>
+        <th scope="col">QTY</th>
+        <th scope="col">UNIT PRICE</th>
+        <th scope="col">DISCOUNT</th>
+        <th scope="col">TOTAL</th>
+    </tr>
+    </thead>
+    <tbody class="tbody_table" style="background-color:lightblue;">
+      <% if (texts.length != 0){ %>
+       <% for(var x=0; x< texts.length; x++){   %>
+        
+          <form action="/customer/delete" method="post">
+            <th scope="row"><input type="checkbox" name="checkbox" value="<%= texts1[texts[x]][0] %>" onChange="this.form.submit()"></th>
+          </form>
+          <th scope="row"> <%= texts[x] %> </th>
+            <form method="POST" action="/add">
+            <!-- <td> <button style="border-radius:100%;" onclick="this.form.submit()" name='sub' value='<%=texts1[texts[x]][0]%>'>-</button> <%= texts1[texts[x]][1] %> <input type="text" size="1" name="add" onclick="this.form.submit()"  class="plus_text" onfocus="this.value='<%=texts1[texts[x]][0]%>'"  autocomplete="off"><button  class="plus-btn" type="button" onclick="this.form.submit()" name='plus' value='<%=texts1[texts[x]][0]%>' style="border-radius:100%;" >+</button></td>-->
+            <td> <button style="border-radius:100%;" onclick="this.form.submit()" name='sub' value='<%=texts1[texts[x]][0]%>'>-</button> <%= texts1[texts[x]][1] %> <input type="text" size="1" name="add"  onclick="" class="plus_text<%=x%>"  autocomplete="off"><button  class="plus-btn" type="button" onclick="this.form.submit()" name='plus' value='<%=texts1[texts[x]][0]%>' style="border-radius:100%;" >+</button></td>
+             <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+                <script type="text/javascript">
+                $(function () {
+                  $(".plus_text<%=x%>").click(function(){
+                  //alert("plus_text<%=x%>")
+                  $(".plus_text<%=x%>").val("<%=texts1[texts[x]][0]%>");
+                  $(".plus_text<%=x%>").attr('onclick','this.form.submit()');
+                  setTimeout(function(){
+                  $(".plus_text<%=x%>").val("");
+                  },1000);
+                  //value.innerHTML = '<%=texts1[texts[x]][0]%>'
+                  //input.innerHTML = this.form.submit() 
+                }) 
+              });
+              </script>
+            </form> 
+            <td><%= texts1[texts[x]][2] %></td>
+            <form method="POST" action="/discount">
+              <td> <button style="border-radius:100%;" onclick="this.form.submit()" name='sub_dcount' value='<%=texts1[texts[x]][0]%>'>-</button> <%= texts1[texts[x]][3] %> <input type="text" size="1"  name="dcount" onclick="this.form.submit()" onfocus="this.value='<%=texts1[texts[x]][0]%>'" class="font-button plus"><button style="border-radius:100%;" class="font-button minus">+</button></td>
+            </form>
+            <td><%= texts1[texts[x]][4] %></td>
+          </tr> 
+       <%} %> 
+      <%} %> 
+  </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!--<form method='POST'>-->
+
+  <div class="container-fluid class1 " >
+    <div class="row">
+
+
+      <!--<div class="col-xl-3 col-lg-4 col-md-5 totals" style="margin-top:0rem; margin: right 1px">
+        <div class="border border-gainsboro px-3">
+          <div class="border-bottom border-gainsboro">
+            <p class="text-uppercase mb-0 py-3"><strong>Order Summary</strong></p>
+          </div>
+          <div class="totals-item d-flex align-items-center justify-content-between mt-3">
+            <p class="text-uppercase">Subtotal</p>
+            <p class="totals-value" id="cart-subtotal"></p>
+            <p > <%= subsum %></p>
+          </div>
+          <div class="totals-item d-flex align-items-center justify-content-between">
+            <p class="text-uppercase">Estimated Tax</p>
+            <p class="totals-value" id="cart-tax"></p>
+          </div>
+          <div class="totals-item totals-item-total d-flex align-items-center justify-content-between mt-3 pt-3 border-top border-gainsboro">
+            <p class="text-uppercase"><strong>Total</strong></p>
+            <p class="totals-value font-weight-bold cart-total"></p>
+          </div>
+        </div>
+        <a href="#" class="mt-3 btn btn-pay w-100 d-flex justify-content-between btn-lg rounded-0">Pay Now <span class="totals-value cart-total"></span></a>
+      </div>-->
+
+      <div class=" col-lg-6 ">
+         
+        <div class="col-xl-3 col-lg-4 col-md-5 totals" >
+          <div class="border border-gainsboro px-3" style="width: 25rem; height:15rem; margin-bottom:40px; background-color:white;">
+            <div class="border-bottom border-gainsboro">
+              <p class="text-uppercase mb-0 py-3"><strong>Order Summary</strong></p>
+            </div>
+            <div class="totals-item d-flex align-items-center justify-content-between mt-3">
+              <p class="text-uppercase">Subtotal</p>
+              <p class="totals-value" id="cart-subtotal"> <%= subsum %> </p>
+            </div>
+            <div class="totals-item d-flex align-items-center justify-content-between">
+              <p class="text-uppercase">Estimated Tax</p>
+              <form method="POST" action="/total_discount">
+                <p class="totals-value" id="cart-tax"><input type ="number" id="cart-taxes" size="1" style="width: 60px;" name="total_dis" value="<%= discount_total %>" ><button id="cart-taxes_bot" style="border-radius:100%;" >+</button> </p> 
+              </form>
+            </div>
+            <div class="totals-item totals-item-total d-flex align-items-center justify-content-between mt-3 pt-3 border-top border-gainsboro">
+              <p class="text-uppercase"><strong>Total</strong></p>
+              <p class="totals-value font-weight-bold cart-total" ><%= total_tax %></p>
+            </div>
+          </div>
+          <!--<a href="#" class="mt-3 btn btn-pay w-100 d-flex justify-content-between btn-lg rounded-0">Pay Now <span class="totals-value cart-total"></span></a>-->
+        </div>
+
+
+      <!-- <div class="card class_card" style="width: 20rem; height:20rem; margin-top:0rem;">
+          <div class="card-body">
+            <h1 class="card-title" style="text-align:auto; ">Card title</h1>
+            <hr>
+            
+            <table class="table" style="background-color:black;">
+              <tbody>
+                <tr>
+                  <td><h2 style="color: white;">Subtotal</h2></td>
+                  <td> <h2 style="color: white;"> = </h2> </td>
+                  <td> <h2 style="color: white;"> <%= subsum %> </h2>  </td>
+                </tr>
+                <tr>
+                  <td><strong><h2 style="color: white;">Discount</h2></strong></td>
+                  <td> <h2 style="color: white;"> = </h2></td>
+                  <form method="POST" action="/total_discount">
+                    <td><input type="text" size="1" name="total_dis"><button style="border-radius:1px ;"> + </button></td>
+                  </form>
+                </tr>
+                <tr>
+                  <td><strong><h2 style="color: white;">Tax</h2></strong></td>
+                  <td> <h2 style="color: white;"> = </h2> </td>
+                  <td> <h2 style="color: white;"> <%= total_tax %> </h2>  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>-->
+      </div>
+       
+        <div  class="col-lg-6  col-md-6  col-sm-6 ">
+          <form method='POST'>
+          <div class=" col-lg-6 col-md-6  col-sm-6 "  style="display:inline-block;">
+            <a class="left carousel-control Text_Slide" href="/created_btn" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </a>
+          </div>
+          <div class="col-lg-6 col-md-6  col-sm-6" >
+             <button type="submit" class="Rice12 btn btn-outline-success button_drink Rice" value="Rice" name="Rice" style="margin-left:20%;">Rice</button>
+             <button type="submit" class="btn btn-outline-success button_drink Rice" value="Cured" name="Rice" style="margin-left:5%;">Cured</button>
+             <button type="submit" class="btn btn-outline-success button_drink Rice" value="Wheate" name="Rice" style="margin-left:5%;">Wheate</button>
+             <button type="submit" class="Rice12 btn btn-outline-success button_drink Rice" value="Rice" name="Rice" style="margin-left:20%;">Rice</button>
+             <button type="submit" class="btn btn-outline-success button_drink Rice" value="Cured" name="Rice" style="margin-left:5%;">Cured</button>
+             <button type="submit" class="btn btn-outline-success button_drink Rice" value="Wheate" name="Rice" style="margin-left:5%;">Wheate</button>
+             <!--<button type="submit" class="btn btn-outline-success" id="Refress" onClick="window.location.reload();">New Cell</button>-->
+          </div>
+          <div class="col-lg-6 col-md-6  col-sm-6" style="display:inline-block; margin-left:400px;">
+            <a class="right carousel-control Text_Slide" href="/drink" role="button" data-slide="next">
+               <span class="carousel-control-next-icon" aria-hidden="true"></span>
+               <span class="visually-hidden">Next</span>
+            </a>
+          </div> 
+        </form>
+        </div>
+      
+      
+    </div>
+  </div>
+<!--</form>-->
+
+
+<form method = 'POST' action = '/new_cell'>
+  <button type="submit" class="Rice12 btn btn-outline-success button_drink Rice" value="1" name="ncell" style="margin-left:20%;" onClick="history.go(0);">New cell</button>
+</form> 
+
+<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $('#cart-taxes_bot').click(function(){
+        '#cart-taxes'.preventDefault();
+        });
+  });
+
+</script> -->
+  <!--<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="/drink" >Drink</a>
+  </nav> </form> -->
+
+
+
+
+<%- include("footer") -%>
+
+
+

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+  <script src="ejs.min.js"></script>
+  <style>
+    body {
+      background: linear-gradient(45deg, #FFC0CB 60%, #00FFFF 40%);
+     }
+
+    html {
+        background-color: #E4E9FD;
+        background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%);
+        min-height: 1000px;
+        font-family: 'helvetica neue';
+      }
+      
+    h1 {
+        color: #fff;
+        padding: 10px;
+      }
+      
+    .box {
+      max-width: 500px;
+      margin: 50px auto;
+      background: white;
+      border-radius: 5px;
+      box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+      }
+      
+      #heading {
+        background-color: #A683E3;
+        text-align: center;
+      }
+      
+    .item {
+        min-height:0px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #F1F1F1;
+      }
+      
+    .item:last-child {
+        border-bottom: 0;
+      }
+      
+    input:checked+p {
+        text-decoration: line-through;
+        text-decoration-color: #A683E3;
+      }
+      
+    input[type="checkbox"] {
+        margin: 20px;
+      }
+      
+    p {
+        margin: 0;
+        padding: 20px;
+        font-size: 20px;
+        font-weight: 200;
+        color: #00204a;
+      }
+      
+    form.item {
+        text-align: center;
+        margin-left: 20px;
+      }
+      
+    .button1 {
+        min-height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        border-color: transparent;
+        background-color: #A683E3;
+        color: #fff;
+        font-size: 30px;
+        padding-bottom: 6px;
+        border-width: 0;
+      }
+      
+    .text_type {
+        text-align: center;
+        height: 60px;
+        top: 10px;
+        border: none;
+        background: transparent;
+        font-size: 20px;
+        font-weight: 200;
+        width: 313px;
+      }
+      
+    .text_type:focus {
+        outline: none;
+        box-shadow: inset 0 -3px 0 0 #A683E3;
+      }
+      
+    ::placeholder {
+       color: grey;
+        opacity: 1;
+      }
+      
+    footer {
+        color: white;
+        color: rgba(0, 0, 0, 0.5);
+        text-align: center;
+      }
+  </style>
+  </head>
+
+<body> 
+
+  <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark" style="margin-top:100px;">
+    <a class="navbar-brand" href="/home" > Home </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/user" > Item Insert <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/map"  > Graph </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:aliceblue;">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/" > Eat Item </a>
+            <a class="dropdown-item" href="/drink" > Drink Item </a>
+            <a class="dropdown-item" href="/snaks_candy" > Snaks Candy Item</a>
+            <a class="dropdown-item" href="/bakery" > Bakery Kitchen Item</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/created_btn" > Inserted Item</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" >Disabled</a>
+        </li>
+      </ul>
+
+      <input  class="mr-sm-2" type="search" id ='myInput' placeholder="Search" aria-label="Search" onkeyup=" myFunction() ">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </div>
+  </nav>
+
+
+  
+ <div class="box">
+  <!-- table -->
+  <table class="table" id="mytable">
+    <thead style="background-color:#E8EAE3">
+      <tr>
+        <th scope="#"> Delete </th>
+        <th scope="col"> Product Name </th>
+        <th scope="col"> Unit_Price </th>
+        <th scope="col"> Quantity </th>
+      </tr>
+    </thead>
+    <tbody style="background-color:#F8E5E5;">
+      <% for(var x=0; x< newListItems.length; x++){   %>
+      <tr>
+        <div class="item"> 
+          <form action="/user/delete" method="post">
+            <th scope="row"><input type="checkbox" name="checkbox" value="<%=newListItems[x]._id%>" onChange="this.form.submit()"></th>
+            <td><%= newListItems[x].name %></td>
+          </form>
+          <form action="/user/add/price" method="post">
+            <!--<td><%= newListItems[x].Unit_Price %> <input type="text" size="1"  class="add_price" name="price_add" onclick="this.form.submit()" onfocus="this.value='<%=newListItems[x]._id%>'"> <button style="border-radius:1px ;">+</button></td>-->
+            <td><%= newListItems[x].Unit_Price %> <input type="text" size="1"  class="add_price<%=x%>" name="price_add" onclick=""> <button style="border-radius:1px ;">+</button></td>
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+              <script type="text/javascript">
+              $(function () {
+                $(".add_price<%=x%>").click(function(){
+                  $(".add_price<%=x%>").val("<%=newListItems[x]._id%>");
+                  $(".add_price<%=x%>").attr('onclick','this.form.submit()');
+                  setTimeout(function(){
+                  $(".add_price<%=x%>").val("");
+                  },1000);
+                }) 
+              });
+              </script>
+          </form>
+          <form action="/user/add" method="post">
+            <!--<td><%= newListItems[x].qty %> <input type="text" size="1"  class="add_qty" name="item_add" onclick="this.form.submit()" onfocus="this.value='<%=newListItems[x]._id%>'" > <button style="border-radius:1px ;">+</button></td>-->
+            <td><%= newListItems[x].qty %> <input type="text" size="1"  class="add_qty<%=x%>" name="item_add" onclick="" > <button style="border-radius:1px ;">+</button></td>
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+              <script type="text/javascript">
+              $(function () {
+                $(".add_qty<%=x%>").click(function(){
+                  $(".add_qty<%=x%>").val("<%=newListItems[x]._id%>");
+                  $(".add_qty<%=x%>").attr('onclick','this.form.submit()');
+                  setTimeout(function(){
+                  $(".add_price<%=x%>").val("");
+                  },1000);
+                }) 
+              });
+              </script>
+          </form>
+        </div>
+      </tr>
+      <% } %>
+    </tbody>
+   </table> 
+    <form class="item" action="/user" method="post">
+     <input  class='text_type' type="text" name="newItem" placeholder="New Item" autocomplete="off">
+     <button type="submit" name="list" class ='button1' >+</button>
+    </form>
+  </div>
+
+  <script>
+    function myFunction() {
+        let input = document.getElementById("myInput").value.toUpperCase();
+
+        let myTable = document.getElementById("mytable");
+
+        let tr = myTable.getElementsByTagName('tr');
+
+        for (i = 0; i < tr.length; i++) {
+            let td = tr[i].getElementsByTagName("td")[0];
+      
+            if (td) {
+              let textvalue = td.textContent || td.innerHTML;
+              if (textvalue.toUpperCase().indexOf(input) > -1){
+                tr[i].style.display = "";
+              }else{
+                tr[i].style.display = "none";
+              }
+        
+        }
+      } 
+   }
+  </script>
+</body>
+<footer >
+    Copyright 2018 The App Brewery
+</footer>
+</html>

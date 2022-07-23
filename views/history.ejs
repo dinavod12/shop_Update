@@ -1,0 +1,38 @@
+<%- include ('header') -%>
+<body class="whole_body">
+  <div class="container mt-5 px-2 body">
+    <!--<div class="mb-2 d-flex justify-content-between align-items-center">
+        <div class="position-relative"> <span class="position-absolute search"><i class="fa fa-search"></i></span> <input class="form-control w-100" placeholder="Search by order#, name..."> </div>
+        <div class="px-2"> <span>Filters <i class="fa fa-angle-down"></i></span> <i class="fa fa-ellipsis-h ms-3"></i> </div>
+    </div>-->
+    <div class="table-responsive table_contain" style="height: 440px;  overflow-y: scroll;">
+        <table class="table table-responsive table-borderless">
+            <thead style="position: sticky; top:0;">
+                <tr class="bg-light" style="background-color:lightgrey;">
+                    <th scope="col" width="5%">Day</th>
+                    <th scope="col" width="20%">Date</th>
+                    <th scope="col" width="10%">Time</th>
+                    <th scope="col" width="10%">Name</th>
+                    <th scope="col" width="20%">Quantity</th>
+                    <th scope="col" width="20%">Unit_Price</th>
+                    <th scope="col" class="text-end" width="20%"><span>Total</span></th>
+                </tr>
+            </thead>
+            <tbody>
+              <% for(var x=0; x < texts1.length; x++){ %>
+                <tr class="text1">
+                    <td><%= day %></td>
+                    <td> <%= date  %> </td>
+                    <td><i class="fa fa-check-circle-o green"></i><span class="ms-1"><%= time  %></span></td>
+                    <td> <i class="fa fa-dot-circle-o text-danger"></i><span class="ms-1"></span> <%= texts1[x].name %> </td>
+                    <td><%= texts1[x].qty %></td>
+                    <td><%= texts1[x].Unit_Price %></td>
+                    <td class="text-end"><span class="fw-bolder"><%= texts1[x].Total %></span> <i class="fa fa-ellipsis-h ms-2"></i></td>
+                </tr>
+              <%} %>
+            </tbody>
+        </table>
+    </div>
+  </div>
+</body>
+</html>

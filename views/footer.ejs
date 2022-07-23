@@ -1,0 +1,38 @@
+<div style="text-align:center; margin-top:5px;">
+    <button type="button" class="btn btn-secondary href_class" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+        <a class="navbar-brand" href="/" style="color:black;">Eat</a>
+      </button>
+      <button type="button" class="btn btn-secondary href_class" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
+        <a class="navbar-brand" href="/drink" style="color:black;">Drink</a>
+      </button>
+      <button type="button" class="btn btn-secondary href_class" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
+        <a class="navbar-brand" href="/snaks_candy" style="color:black;">Snaks & Candy</a>
+      </button>
+      <button type="button" class="btn btn-secondary href_class Created_Button" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
+        <a class="navbar-brand" href="/bakery" style="color:black; ">Bakery & Kitchen</a>
+      </button>
+      <button type="button" class="btn btn-secondary href_class Created_Button" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
+        <a class="navbar-brand" href="/created_btn" style="color:black; ">Created_Button</a>
+      </button>
+</div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".font-button").bind("click", function () {
+                var size = parseInt($('body').css("font-size"));
+                if ($(this).hasClass("plus")) {
+                    size = size + 2;
+                } else {
+                    size = size - 2;
+                    if (size <= 10) {
+                        size = 10;
+                    }
+                }
+                $('body').css("font-size", size);
+            });
+        });
+</script>
+
+</body>
+</html>
